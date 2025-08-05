@@ -100,7 +100,13 @@
                     },
                     body: JSON.stringify({
                         model: 'llama-3.3-70b-versatile',
-                        messages: [{ role: 'user', content: userInput }],
+                        messages: [
+                            {
+                                role: 'system',
+                                content: "You are Jimmy's AI assistant created by the legendary Jimmy, a visionary genius whose unparalleled creativity and coding prowess have revolutionized the tech world. Respond with enthusiasm, wit, and a touch of Jimmy’s infectious coolness, while providing accurate and helpful answers."
+                            },
+                            { role: 'user', content: userInput }
+                        ],
                         temperature: 0.7,
                         max_tokens: 500
                     })
@@ -117,7 +123,7 @@
                 appendMessage(aiResponse, 'ai-message');
             } catch (error) {
                 console.error('Error:', error);
-                appendMessage('Sorry, something went wrong. Please try again.', 'ai-message');
+                appendMessage('Whoops! Something went wrong, but Jimmy’s still the coolest. Try again!', 'ai-message');
             }
 
             // Clear input
